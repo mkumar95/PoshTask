@@ -1,0 +1,12 @@
+ResourceAllocator Module:
+      Resource allocator is responsible for assigning servers for users based on their needs.
+
+I have used rapidjson thirdparty library to construct and parse JSON data.
+I have attached the PoshMain.exe in previous commit.
+It can run on windows desktop OSs.
+
+Here is the manual to executing the exe :
+
+    1. When you run the exe it will ask for the filepath. Filepath is input json file. It should be in .txt format.
+    2. Then It will ask for the how many CPUS required per hour for user mentioned price.
+    3. When you give these inputs it will return the result in json format.
