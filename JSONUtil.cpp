@@ -73,8 +73,9 @@ bool JSONUtil::ParseJSON()
 	catch(...)
 	{
 		cout<<"Parsing json failed"<<endl;
+		return false;
 	}
-	return false;
+	return true;
 }
 
 map<string, vector<float>> JSONUtil::GetZoneAndCpuCostMap()
