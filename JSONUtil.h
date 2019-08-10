@@ -25,7 +25,7 @@ public:
 	JSONUtil(string jsonStr);
 	bool ValidateJSONDocument(const char* json);
 	string GetStringFromFile(string filePath);
-	void ParseJSON();
+	bool ParseJSON();
 	map<string, vector<float>> GetZoneAndCpuCostMap();
 	string ConstructJSON(vector<pair<string, pair< vector<int>, float > >> serverCostForEachZone);
 	~JSONUtil();
