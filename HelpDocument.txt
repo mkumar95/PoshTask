@@ -2,7 +2,7 @@ ResourceAllocator Module:
       Resource allocator is responsible for assigning servers for users based on their needs.
 
 I have used rapidjson thirdparty library to construct and parse JSON data.
-I have attached the PoshMain.exe in previous commit.
+I have attached the ResourceAllocator.exe in previous commit.
 It can run on windows desktop OSs.
 
 Here is the manual to executing the exe :
@@ -15,7 +15,3 @@ Here is the manual to executing the exe :
 Testcases Document Link :
      https://docs.google.com/spreadsheets/d/1jIS97L6yxd4AharwftBcG3jCMw6zh66FdsBRlfnCi-o/edit?usp=sharing
      
-Ignore these files :
-    1. PoshMain.cpp
-    2. PoshMain.exe
-    3. PoshMarkTask.zip
