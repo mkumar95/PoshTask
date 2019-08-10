@@ -51,22 +51,30 @@ string JSONUtil::GetStringFromFile(string filePath)
 	return jsonStr;
 }
 
-void JSONUtil::ParseJSON()
+bool JSONUtil::ParseJSON()
 {
-	auto zoneItr = jsonDoc.MemberBegin();
-	while (zoneItr != jsonDoc.MemberEnd())
+	try
 	{
-		string zoneName = zoneItr->name.GetString();
-		const Value& zoneValue = zoneItr->value;
-		vector<float> cpuCostVect(6,-1); // server types 6
-		for (Value::ConstMemberIterator itr = zoneValue.MemberBegin(); itr != zoneValue.MemberEnd(); ++itr)
+		auto zoneItr = jsonDoc.MemberBegin();
+		while (zoneItr != jsonDoc.MemberEnd())
 		{
-			int index = serverCpuCountMap[itr->name.GetString()];
-			cpuCostVect[index] = itr->value.GetFloat();
+			string zoneName = zoneItr->name.GetString();
+			const Value& zoneValue = zoneItr->value;
+			vector<float> cpuCostVect(6,-1); // server types 6
+			for (Value::ConstMemberIterator itr = zoneValue.MemberBegin(); itr != zoneValue.MemberEnd(); ++itr)
+			{
+				int index = serverCpuCountMap[itr->name.GetString()];
+				cpuCostVect[index] = itr->value.GetFloat();
+			}
+			zoneAndServerCostMap.emplace(make_pair(zoneName, cpuCostVect));
+			zoneItr++;
 		}
-		zoneAndServerCostMap.emplace(make_pair(zoneName, cpuCostVect));
-		zoneItr++;
 	}
+	catch(...)
+	{
+		cout<<"Parsing json failed"<<endl;
+	}
+	return false;
 }
 
 map<string, vector<float>> JSONUtil::GetZoneAndCpuCostMap()
