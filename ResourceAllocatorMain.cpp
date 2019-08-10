@@ -60,12 +60,16 @@ vector<pair<string, pair< vector<int>, float > >>  GetServerCost(map<string, vec
 
 int main()
 {
-	string filePath;
+	string severCostDetails;
 	int hours, cpus, price = -1;
 	cout << "Enter the region and their server details as json :: " << endl;
-	cin >> filePath;
-	JSONUtil jsonUtil(filePath);
-	jsonUtil.ParseJSON();
+	cin >> severCostDetails;
+	JSONUtil jsonUtil(severCostDetails);
+	if(!jsonUtil.ParseJSON())
+	{
+		cout<<"Parsing JSON failed"<<endl;
+		return 0;
+	}
 	vector< vector<float> > servers;
 	cout << "Enter CPU's required and how many hours you need  :: ";
 	cin >> cpus >> hours;
