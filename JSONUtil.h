@@ -22,7 +22,7 @@ private:
 	map<string, int> serverCpuCountMap;
 public:
 	Document jsonDoc;
-	JSONUtil(string filePath);
+	JSONUtil(string jsonStr);
 	bool ValidateJSONDocument(const char* json);
 	string GetStringFromFile(string filePath);
 	void ParseJSON();

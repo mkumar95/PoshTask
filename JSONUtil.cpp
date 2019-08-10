@@ -2,9 +2,9 @@
 #include "JSONUtil.h"
 
 
-JSONUtil::JSONUtil(string filePath)
+JSONUtil::JSONUtil(string jsonStr)
 {
-	string jsonStr = GetStringFromFile(filePath);
+	//string jsonStr = GetStringFromFile(filePath);
 	if (!jsonStr.empty())
 	{
 		if (this->ValidateJSONDocument(jsonStr.c_str()))
@@ -146,7 +146,7 @@ string JSONUtil::ConstructJSON(vector<pair<string, pair< vector<int>, float > >>
 		serverListWithZone.PushBack(childNode, allocator);
 		serverItr++;
 	}
-	jsonDoc.AddMember("JSON",serverListWithZone, allocator);
+	jsonDoc.AddMember("ServerCostDetails",serverListWithZone, allocator);
 	StringBuffer buffer;
 	Writer<StringBuffer> writer(buffer);
 	jsonDoc.Accept(writer);
